@@ -1,0 +1,19 @@
+version: "3"
+services:
+  proxy:
+     image: dalongrong/presto-gateway:1.6.1
+     ports:
+     - "8888:8888"
+     - "8082:8082"
+     - "8083:8083"
+     build: ./
+     volumes:
+     - "./config.yml.template:/config.yml.template"
+  presto1:
+     image: starburstdata/presto
+     ports:
+     - "8080:8080"
+  presto2:
+     image: starburstdata/presto
+     ports:
+     - "8081:8080"

@@ -57,14 +57,14 @@ public class QueryIdCachingProxyHandler extends ProxyHandler {
   private final int localApplicationPort;
 
   public QueryIdCachingProxyHandler(
-      GatewayBackendManager gatewayBackendManager,
-      QueryHistoryManager queryHistoryManager,
-      GatewayConfiguration appConfig,
-      Meter requestMeter) {
+          GatewayBackendManager gatewayBackendManager,
+          QueryHistoryManager queryHistoryManager,
+          GatewayConfiguration appConfig,
+          Meter requestMeter) {
     this.requestMeter = requestMeter;
     this.routingManager =
-        new DefaultRoutingManager(
-            gatewayBackendManager, appConfig.getRequestRouter().getCacheDir());
+            new DefaultRoutingManager(
+                    gatewayBackendManager, appConfig.getRequestRouter().getCacheDir());
     this.queryHistoryManager = queryHistoryManager;
     this.localApplicationPort = getApplicationPort(appConfig);
   }
@@ -75,31 +75,31 @@ public class QueryIdCachingProxyHandler extends ProxyHandler {
 
   private int getApplicationPort(GatewayConfiguration configuration) {
     Stream<ConnectorFactory> connectors =
-        configuration.getServerFactory() instanceof DefaultServerFactory
-            ? ((DefaultServerFactory) configuration.getServerFactory())
-                .getApplicationConnectors().stream()
-            : Stream.of((SimpleServerFactory) configuration.getServerFactory())
-                .map(SimpleServerFactory::getConnector);
+            configuration.getServerFactory() instanceof DefaultServerFactory
+                    ? ((DefaultServerFactory) configuration.getServerFactory())
+                    .getApplicationConnectors().stream()
+                    : Stream.of((SimpleServerFactory) configuration.getServerFactory())
+                    .map(SimpleServerFactory::getConnector);
 
     return connectors
-        .filter(connector -> connector.getClass().isAssignableFrom(HttpConnectorFactory.class))
-        .map(connector -> (HttpConnectorFactory) connector)
-        .mapToInt(HttpConnectorFactory::getPort)
-        .findFirst()
-        .orElseThrow(IllegalStateException::new);
+            .filter(connector -> connector.getClass().isAssignableFrom(HttpConnectorFactory.class))
+            .map(connector -> (HttpConnectorFactory) connector)
+            .mapToInt(HttpConnectorFactory::getPort)
+            .findFirst()
+            .orElseThrow(IllegalStateException::new);
   }
 
   @Override
   public void preConnectionHook(HttpServletRequest request, Request proxyRequest) {
     if (request.getMethod().equals(HttpMethod.POST)
-        && request.getRequestURI().startsWith(V1_STATEMENT_PATH)) {
+            && request.getRequestURI().startsWith(V1_STATEMENT_PATH)) {
       requestMeter.mark();
       try {
         String requestBody = CharStreams.toString(request.getReader());
         log.info(
-            "Processing request endpoint: [{}], payload: [{}]",
-            request.getRequestURI(),
-            requestBody);
+                "Processing request endpoint: [{}], payload: [{}]",
+                request.getRequestURI(),
+                requestBody);
         debugLogHeaders(request);
       } catch (Exception e) {
         log.warn("Error fetching the request payload", e);
@@ -109,9 +109,9 @@ public class QueryIdCachingProxyHandler extends ProxyHandler {
 
   private boolean isPathWhiteListed(String path) {
     return path.startsWith(V1_STATEMENT_PATH)
-        || path.startsWith(V1_QUERY_PATH)
-        || path.startsWith(PRESTO_UI_PATH)
-        || path.startsWith(V1_INFO_PATH);
+            || path.startsWith(V1_QUERY_PATH)
+            || path.startsWith(PRESTO_UI_PATH)
+            || path.startsWith(V1_INFO_PATH);
   }
 
   @Override
@@ -139,18 +139,18 @@ public class QueryIdCachingProxyHandler extends ProxyHandler {
       ((MultiReadHttpServletRequest) request).addHeader(PROXY_TARGET_HEADER, backendAddress);
     }
     String targetLocation =
-        backendAddress
-            + request.getRequestURI()
-            + (request.getQueryString() != null ? "?" + request.getQueryString() : "");
+            backendAddress
+                    + request.getRequestURI()
+                    + (request.getQueryString() != null ? "?" + request.getQueryString() : "");
 
     String originalLocation =
-        request.getScheme()
-            + "://"
-            + request.getRemoteHost()
-            + ":"
-            + request.getServerPort()
-            + request.getRequestURI()
-            + (request.getQueryString() != null ? "?" + request.getQueryString() : "");
+            request.getScheme()
+                    + "://"
+                    + request.getRemoteHost()
+                    + ":"
+                    + request.getServerPort()
+                    + request.getRequestURI()
+                    + (request.getQueryString() != null ? "?" + request.getQueryString() : "");
 
     log.info("Rerouting [{}]--> [{}]", originalLocation, targetLocation);
     return targetLocation;
@@ -162,7 +162,7 @@ public class QueryIdCachingProxyHandler extends ProxyHandler {
     try {
       String queryText = CharStreams.toString(request.getReader());
       if (!Strings.isNullOrEmpty(queryText)
-          && queryText.toLowerCase().contains("system.runtime.kill_query")) {
+              && queryText.toLowerCase().contains("system.runtime.kill_query")) {
         // extract and return the queryId
         String[] parts = queryText.split(",");
         for (String part : parts) {
@@ -188,14 +188,14 @@ public class QueryIdCachingProxyHandler extends ProxyHandler {
     log.debug("trying to extract query id from path [{}] or queryString [{}]", path, queryParams);
     if (path.startsWith(V1_STATEMENT_PATH) || path.startsWith(V1_QUERY_PATH)) {
       String[] tokens = path.split("/");
-        if (tokens.length >= 4) {
-          if(path.indexOf("queued")>-1||path.indexOf("scheduled")>-1||path.indexOf("executing")>-1||path.indexOf("partialCancel")>-1){
-            queryId = tokens[4];
-          }
-          else {
-            queryId = tokens[3];
-          }
-
+      if (tokens.length >= 4) {
+        // for prestosql/presto api support link  https://github.com/prestosql/presto/blob/master/presto-main/src/main/java/io/prestosql/server/protocol/ExecutingStatementResource.java
+        if(path.indexOf("queued")>-1||path.indexOf("scheduled")>-1||path.indexOf("executing")>-1||path.indexOf("partialCancel")>-1){
+          queryId = tokens[4];
+        }
+        else {
+          queryId = tokens[3];
+        }
       }
     } else if (path.startsWith(PRESTO_UI_PATH)) {
       queryId = queryParams;
@@ -215,16 +215,16 @@ public class QueryIdCachingProxyHandler extends ProxyHandler {
    * @param callback
    */
   protected void postConnectionHook(
-      HttpServletRequest request,
-      HttpServletResponse response,
-      byte[] buffer,
-      int offset,
-      int length,
-      Callback callback) {
+          HttpServletRequest request,
+          HttpServletResponse response,
+          byte[] buffer,
+          int offset,
+          int length,
+          Callback callback) {
     try {
       String requestPath = request.getRequestURI();
       if (requestPath.startsWith(V1_STATEMENT_PATH)
-          && request.getMethod().equals(HttpMethod.POST)) {
+              && request.getMethod().equals(HttpMethod.POST)) {
         String output;
         boolean isGZipEncoding = isGZipEncoding(response);
         if (isGZipEncoding) {
@@ -243,19 +243,19 @@ public class QueryIdCachingProxyHandler extends ProxyHandler {
 
           if (!Strings.isNullOrEmpty(queryDetail.getQueryId())) {
             routingManager.setBackendForQueryId(
-                queryDetail.getQueryId(), queryDetail.getBackendUrl());
+                    queryDetail.getQueryId(), queryDetail.getBackendUrl());
             log.debug(
-                "QueryId [{}] mapped with proxy [{}]",
-                queryDetail.getQueryId(),
-                queryDetail.getBackendUrl());
+                    "QueryId [{}] mapped with proxy [{}]",
+                    queryDetail.getQueryId(),
+                    queryDetail.getBackendUrl());
           } else {
             log.debug("QueryId [{}] could not be cached", queryDetail.getQueryId());
           }
         } else {
           log.error(
-              "Non OK HTTP Status code with response [{}] , Status code [{}]",
-              output,
-              response.getStatus());
+                  "Non OK HTTP Status code with response [{}] , Status code [{}]",
+                  output,
+                  response.getStatus());
         }
         // Saving history at gateway.
         queryHistoryManager.submitQueryDetail(queryDetail);
@@ -269,7 +269,7 @@ public class QueryIdCachingProxyHandler extends ProxyHandler {
   }
 
   private QueryHistoryManager.QueryDetail getQueryDetailsFromRequest(HttpServletRequest request)
-      throws IOException {
+          throws IOException {
     QueryHistoryManager.QueryDetail queryDetail = new QueryHistoryManager.QueryDetail();
     queryDetail.setBackendUrl(request.getHeader(PROXY_TARGET_HEADER));
     queryDetail.setCaptureTime(System.currentTimeMillis());
@@ -277,9 +277,9 @@ public class QueryIdCachingProxyHandler extends ProxyHandler {
     queryDetail.setSource(request.getHeader(SOURCE_HEADER));
     String queryText = CharStreams.toString(request.getReader());
     queryDetail.setQueryText(
-        queryText.length() > QUERY_TEXT_LENGTH_FOR_HISTORY
-            ? queryText.substring(0, QUERY_TEXT_LENGTH_FOR_HISTORY) + "..."
-            : queryText);
+            queryText.length() > QUERY_TEXT_LENGTH_FOR_HISTORY
+                    ? queryText.substring(0, QUERY_TEXT_LENGTH_FOR_HISTORY) + "..."
+                    : queryText);
     return queryDetail;
   }
 }

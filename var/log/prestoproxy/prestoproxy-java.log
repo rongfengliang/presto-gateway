@@ -21617,3 +21617,642 @@ INFO  [2019-08-24 01:23:13,281] org.eclipse.jetty.server.handler.ContextHandler:
 INFO  [2019-08-24 01:23:13,283] org.eclipse.jetty.server.AbstractConnector: Stopped presto2@2efcc0b3{HTTP/1.1,[http/1.1]}{0.0.0.0:8083}
 INFO  [2019-08-24 01:23:13,283] org.eclipse.jetty.server.session: Stopped scavenging
 INFO  [2019-08-24 01:23:13,284] org.eclipse.jetty.server.handler.ContextHandler: Stopped o.e.j.s.ServletContextHandler@3460e4ed{/,null,UNAVAILABLE}
+INFO  [2019-08-24 01:25:49,064] io.dropwizard.server.DefaultServerFactory: Registering jersey handler with root path prefix: /
+INFO  [2019-08-24 01:25:49,068] io.dropwizard.server.DefaultServerFactory: Registering admin handler with root path prefix: /
+INFO  [2019-08-24 01:25:49,068] io.dropwizard.assets.AssetsBundle: Registering AssetBundle with name: assets for path /assets/*
+INFO  [2019-08-24 01:25:49,117] com.lyft.data.gateway.GatewayLauncher: Trying to load module [com.lyft.data.gateway.module.ProxyBackendProviderModule]
+INFO  [2019-08-24 01:25:49,118] com.lyft.data.gateway.GatewayLauncher: Trying to load module [com.lyft.data.gateway.module.GatewayProviderModule]
+WARN  [2019-08-24 01:25:49,126] com.lyft.data.gateway.router.impl.GatewayBackendManagerImpl: No previous backend cluster state found - ./var/log/prestoproxy/cache/presto_cluster_state.json (No such file or directory)
+INFO  [2019-08-24 01:25:49,127] com.lyft.data.gateway.GatewayLauncher: Trying to load module [com.lyft.data.gateway.module.NotifierModule]
+INFO  [2019-08-24 01:25:49,367] com.lyft.data.baseapp.BaseApp: op=register_start configuration=GatewayConfiguration(requestRouter=RequestRouterConfiguration(port=8888, name=prestoRouter, cacheDir=./var/log/prestoproxy/cache, ssl=false, keystorePath=null, keystorePass=null, historySize=1000), notifier=NotifierConfiguration(startTlsEnabled=false, smtpAuthEnabled=false, smtpHost=localhost, smtpPort=587, smtpUser=null, smtpPassword=null, sender=presto-gw-monitor-noreply@lyft.com, recipients=[prestodev@yourorg.com]), backends=[ProxyBackendConfiguration(includeInRouter=true, active=true, routingGroup=adhoc), ProxyBackendConfiguration(includeInRouter=true, active=true, routingGroup=adhoc2)], modules=[com.lyft.data.gateway.module.ProxyBackendProviderModule, com.lyft.data.gateway.module.GatewayProviderModule, com.lyft.data.gateway.module.NotifierModule], managedApps=[com.lyft.data.gateway.GatewayManagedApp, com.lyft.data.gateway.ActiveClusterMonitor])
+DEBUG [2019-08-24 01:25:49,393] com.lyft.data.gateway.module.ProxyBackendProviderModule: Starting proxy backend [presto1]
+DEBUG [2019-08-24 01:25:49,447] com.lyft.data.gateway.module.ProxyBackendProviderModule: Starting proxy backend [presto2]
+INFO  [2019-08-24 01:25:49,710] org.terracotta.offheapstore.paging.UpfrontAllocatingPageSource: Allocating 100.0MB in chunks
+INFO  [2019-08-24 01:25:49,855] org.ehcache.core.EhcacheManager: Cache 'queryIdBackendPersistentCache' created in EhcacheManager.
+INFO  [2019-08-24 01:25:49,861] com.lyft.data.gateway.GatewayLauncher: op=register type=managed item=class com.lyft.data.gateway.GatewayManagedApp
+INFO  [2019-08-24 01:25:49,872] com.lyft.data.gateway.GatewayLauncher: op=register type=managed item=class com.lyft.data.gateway.ActiveClusterMonitor
+INFO  [2019-08-24 01:25:49,886] com.lyft.data.baseapp.BaseApp: op=register type=resource item=class com.lyft.data.gateway.resource.GatewayResource
+INFO  [2019-08-24 01:25:49,891] com.lyft.data.baseapp.BaseApp: op=register type=resource item=class com.lyft.data.gateway.resource.GatewayViewResource
+INFO  [2019-08-24 01:25:49,891] com.lyft.data.baseapp.BaseApp: op=register_end configuration=GatewayConfiguration(requestRouter=RequestRouterConfiguration(port=8888, name=prestoRouter, cacheDir=./var/log/prestoproxy/cache, ssl=false, keystorePath=null, keystorePass=null, historySize=1000), notifier=NotifierConfiguration(startTlsEnabled=false, smtpAuthEnabled=false, smtpHost=localhost, smtpPort=587, smtpUser=null, smtpPassword=null, sender=presto-gw-monitor-noreply@lyft.com, recipients=[prestodev@yourorg.com]), backends=[ProxyBackendConfiguration(includeInRouter=true, active=true, routingGroup=adhoc), ProxyBackendConfiguration(includeInRouter=true, active=true, routingGroup=adhoc2)], modules=[com.lyft.data.gateway.module.ProxyBackendProviderModule, com.lyft.data.gateway.module.GatewayProviderModule, com.lyft.data.gateway.module.NotifierModule], managedApps=[com.lyft.data.gateway.GatewayManagedApp, com.lyft.data.gateway.ActiveClusterMonitor])
+INFO  [2019-08-24 01:25:49,898] com.lyft.data.baseapp.BaseApp: op=configure_guice injector=Injector{bindings=[InstanceBinding{key=Key[type=com.google.inject.Stage, annotation=[none]], source=[unknown source], instance=DEVELOPMENT}, ProviderInstanceBinding{key=Key[type=com.google.inject.Injector, annotation=[none]], source=[unknown source], scope=Scopes.NO_SCOPE, provider=Provider<Injector>}, ProviderInstanceBinding{key=Key[type=java.util.logging.Logger, annotation=[none]], source=[unknown source], scope=Scopes.NO_SCOPE, provider=Provider<Logger>}, InstanceBinding{key=Key[type=com.codahale.metrics.MetricRegistry, annotation=[none]], source=com.lyft.data.baseapp.MetricRegistryModule.configure(MetricRegistryModule.java:19), instance=com.codahale.metrics.MetricRegistry@5a0e0886}, ProviderInstanceBinding{key=Key[type=java.util.List<com.lyft.data.proxyserver.ProxyServer>, annotation=[none]], source=public java.util.List com.lyft.data.gateway.module.ProxyBackendProviderModule.getProxyServers(), scope=Scopes.SINGLETON, provider=@Provides com.lyft.data.gateway.module.ProxyBackendProviderModule.getProxyServers(ProxyBackendProviderModule.java:29)}, ProviderInstanceBinding{key=Key[type=com.lyft.data.proxyserver.ProxyServer, annotation=[none]], source=public com.lyft.data.proxyserver.ProxyServer com.lyft.data.gateway.module.GatewayProviderModule.provideGateway(), scope=Scopes.SINGLETON, provider=@Provides com.lyft.data.gateway.module.GatewayProviderModule.provideGateway(GatewayProviderModule.java:71)}, ProviderInstanceBinding{key=Key[type=com.lyft.data.gateway.router.GatewayBackendManager, annotation=[none]], source=public com.lyft.data.gateway.router.GatewayBackendManager com.lyft.data.gateway.module.GatewayProviderModule.getGatewayBackendManager(), scope=Scopes.SINGLETON, provider=@Provides com.lyft.data.gateway.module.GatewayProviderModule.getGatewayBackendManager(GatewayProviderModule.java:93)}, ProviderInstanceBinding{key=Key[type=com.lyft.data.gateway.router.QueryHistoryManager, annotation=[none]], source=public com.lyft.data.gateway.router.QueryHistoryManager com.lyft.data.gateway.module.GatewayProviderModule.getQueryHistoryManager(), scope=Scopes.SINGLETON, provider=@Provides com.lyft.data.gateway.module.GatewayProviderModule.getQueryHistoryManager(GatewayProviderModule.java:99)}, ProviderInstanceBinding{key=Key[type=com.lyft.data.gateway.notifier.Notifier, annotation=[none]], source=public com.lyft.data.gateway.notifier.Notifier com.lyft.data.gateway.module.NotifierModule.provideNotifier(), scope=Scopes.SINGLETON, provider=@Provides com.lyft.data.gateway.module.NotifierModule.provideNotifier(NotifierModule.java:21)}]}
+INFO  [2019-08-24 01:25:49,898] com.lyft.data.baseapp.BaseApp: op=configure_app_custom completed
+INFO  [2019-08-24 01:25:49,900] io.dropwizard.server.ServerFactory: Starting GatewayLauncher
+INFO  [2019-08-24 01:25:50,009] org.eclipse.jetty.setuid.SetUIDListener: Opened application@3249e278{HTTP/1.1,[http/1.1]}{0.0.0.0:8090}
+INFO  [2019-08-24 01:25:50,009] org.eclipse.jetty.setuid.SetUIDListener: Opened admin@35adf623{HTTP/1.1,[http/1.1]}{0.0.0.0:8091}
+INFO  [2019-08-24 01:25:50,012] org.eclipse.jetty.server.Server: jetty-9.4.9.v20180320; built: 2018-03-20T20:21:10+08:00; git: 1f8159b1e4a42d3f79997021ea1609f2fbac6de5; jvm 1.8.0_161-b12
+INFO  [2019-08-24 01:25:50,029] org.eclipse.jetty.server.Server: jetty-9.4.9.v20180320; built: 2018-03-20T20:21:10+08:00; git: 1f8159b1e4a42d3f79997021ea1609f2fbac6de5; jvm 1.8.0_161-b12
+INFO  [2019-08-24 01:25:50,044] org.eclipse.jetty.server.session: DefaultSessionIdManager workerName=node0
+INFO  [2019-08-24 01:25:50,044] org.eclipse.jetty.server.session: No SessionScavenger set, using defaults
+INFO  [2019-08-24 01:25:50,046] org.eclipse.jetty.server.session: Scavenging every 600000ms
+DEBUG [2019-08-24 01:25:50,388] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: prestoRouter @ / to 
+INFO  [2019-08-24 01:25:50,389] org.eclipse.jetty.server.handler.ContextHandler: Started o.e.j.s.ServletContextHandler@64518270{/,null,AVAILABLE}
+INFO  [2019-08-24 01:25:50,391] org.eclipse.jetty.server.AbstractConnector: Started prestoRouter@52b959df{HTTP/1.1,[http/1.1]}{0.0.0.0:8888}
+INFO  [2019-08-24 01:25:50,391] org.eclipse.jetty.server.Server: Started @4014ms
+INFO  [2019-08-24 01:25:50,392] org.eclipse.jetty.server.Server: jetty-9.4.9.v20180320; built: 2018-03-20T20:21:10+08:00; git: 1f8159b1e4a42d3f79997021ea1609f2fbac6de5; jvm 1.8.0_161-b12
+INFO  [2019-08-24 01:25:50,394] org.eclipse.jetty.server.session: DefaultSessionIdManager workerName=node0
+INFO  [2019-08-24 01:25:50,394] org.eclipse.jetty.server.session: No SessionScavenger set, using defaults
+INFO  [2019-08-24 01:25:50,394] org.eclipse.jetty.server.session: Scavenging every 660000ms
+DEBUG [2019-08-24 01:25:50,402] com.lyft.data.proxyserver.ProxyServletImpl.presto1: presto1 @ / to http://47.52.58.151:8080
+INFO  [2019-08-24 01:25:50,403] org.eclipse.jetty.server.handler.ContextHandler: Started o.e.j.s.ServletContextHandler@38fb50f8{/,null,AVAILABLE}
+INFO  [2019-08-24 01:25:50,404] org.eclipse.jetty.server.AbstractConnector: Started presto1@7ab802f4{HTTP/1.1,[http/1.1]}{0.0.0.0:8082}
+INFO  [2019-08-24 01:25:50,404] org.eclipse.jetty.server.Server: Started @4027ms
+INFO  [2019-08-24 01:25:50,404] org.eclipse.jetty.server.Server: jetty-9.4.9.v20180320; built: 2018-03-20T20:21:10+08:00; git: 1f8159b1e4a42d3f79997021ea1609f2fbac6de5; jvm 1.8.0_161-b12
+INFO  [2019-08-24 01:25:50,405] org.eclipse.jetty.server.session: DefaultSessionIdManager workerName=node0
+INFO  [2019-08-24 01:25:50,405] org.eclipse.jetty.server.session: No SessionScavenger set, using defaults
+INFO  [2019-08-24 01:25:50,405] org.eclipse.jetty.server.session: Scavenging every 600000ms
+DEBUG [2019-08-24 01:25:50,406] com.lyft.data.proxyserver.ProxyServletImpl.presto2: presto2 @ / to http://47.52.58.151:8081
+INFO  [2019-08-24 01:25:50,406] org.eclipse.jetty.server.handler.ContextHandler: Started o.e.j.s.ServletContextHandler@4dad8ec0{/,null,AVAILABLE}
+INFO  [2019-08-24 01:25:50,407] org.eclipse.jetty.server.AbstractConnector: Started presto2@24dd44f9{HTTP/1.1,[http/1.1]}{0.0.0.0:8083}
+INFO  [2019-08-24 01:25:50,407] org.eclipse.jetty.server.Server: Started @4030ms
+INFO  [2019-08-24 01:25:51,022] io.dropwizard.jersey.DropwizardResourceConfig: The following paths were found for the configured resources:
+
+    GET     / (com.lyft.data.gateway.resource.GatewayViewResource)
+    GET     /api/activeBackends (com.lyft.data.gateway.resource.GatewayViewResource)
+    GET     /api/queryHistory (com.lyft.data.gateway.resource.GatewayViewResource)
+    GET     /api/queryHistoryDistribution (com.lyft.data.gateway.resource.GatewayViewResource)
+    GET     /gateway (com.lyft.data.gateway.resource.GatewayResource)
+    POST    /gateway/backend/activate/{name} (com.lyft.data.gateway.resource.GatewayResource)
+    GET     /gateway/backend/active (com.lyft.data.gateway.resource.GatewayResource)
+    GET     /gateway/backend/all (com.lyft.data.gateway.resource.GatewayResource)
+    POST    /gateway/backend/deactivate/{name} (com.lyft.data.gateway.resource.GatewayResource)
+
+INFO  [2019-08-24 01:25:51,023] org.eclipse.jetty.server.handler.ContextHandler: Started i.d.j.MutableServletContextHandler@3a861417{/,null,AVAILABLE}
+INFO  [2019-08-24 01:25:51,029] io.dropwizard.setup.AdminEnvironment: tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+
+WARN  [2019-08-24 01:25:51,030] io.dropwizard.setup.AdminEnvironment: 
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!    THIS APPLICATION HAS NO HEALTHCHECKS. THIS MEANS YOU WILL NEVER KNOW      !
+!     IF IT DIES IN PRODUCTION, WHICH MEANS YOU WILL NEVER KNOW IF YOU'RE      !
+!    LETTING YOUR USERS DOWN. YOU SHOULD ADD A HEALTHCHECK FOR EACH OF YOUR    !
+!         APPLICATION'S DEPENDENCIES WHICH FULLY (BUT LIGHTLY) TESTS IT.       !
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+INFO  [2019-08-24 01:25:51,036] org.eclipse.jetty.server.handler.ContextHandler: Started i.d.j.MutableServletContextHandler@2fb082ff{/,null,AVAILABLE}
+INFO  [2019-08-24 01:25:51,037] org.eclipse.jetty.server.AbstractConnector: Started application@3249e278{HTTP/1.1,[http/1.1]}{0.0.0.0:8090}
+INFO  [2019-08-24 01:25:51,038] org.eclipse.jetty.server.AbstractConnector: Started admin@35adf623{HTTP/1.1,[http/1.1]}{0.0.0.0:8091}
+INFO  [2019-08-24 01:25:51,038] org.eclipse.jetty.server.Server: Started @4661ms
+DEBUG [2019-08-24 01:26:06,210] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: trying to extract query id from path [/v1/statement] or queryString [null]
+DEBUG [2019-08-24 01:26:06,210] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: query id in url [null]
+INFO  [2019-08-24 01:26:06,211] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: Rerouting [http://127.0.0.1:8888/v1/statement]--> [http://47.52.58.151:8080/v1/statement]
+DEBUG [2019-08-24 01:26:06,211] com.lyft.data.proxyserver.ProxyServletImpl: Target : http://47.52.58.151:8080/v1/statement
+DEBUG [2019-08-24 01:26:06,211] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 1544015350 rewriting: http://localhost:8888/v1/statement -> http://47.52.58.151:8080/v1/statement
+INFO  [2019-08-24 01:26:06,214] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: Processing request endpoint: [/v1/statement], payload: [select  * from nation]
+DEBUG [2019-08-24 01:26:06,215] com.lyft.data.proxyserver.ProxyHandler: -------HttpServletRequest headers---------
+DEBUG [2019-08-24 01:26:06,215] com.lyft.data.proxyserver.ProxyHandler: X-Presto-Routing-Group->adhoc
+DEBUG [2019-08-24 01:26:06,215] com.lyft.data.proxyserver.ProxyHandler: Transfer-Encoding->chunked
+DEBUG [2019-08-24 01:26:06,215] com.lyft.data.proxyserver.ProxyHandler: User-Agent->presto-client-node 0.6.1
+DEBUG [2019-08-24 01:26:06,215] com.lyft.data.proxyserver.ProxyHandler: Connection->close
+DEBUG [2019-08-24 01:26:06,215] com.lyft.data.proxyserver.ProxyHandler: X-Presto-Source->nodejs-client
+DEBUG [2019-08-24 01:26:06,215] com.lyft.data.proxyserver.ProxyHandler: Host->localhost:8888
+DEBUG [2019-08-24 01:26:06,215] com.lyft.data.proxyserver.ProxyHandler: X-Presto-Catalog->memory
+DEBUG [2019-08-24 01:26:06,215] com.lyft.data.proxyserver.ProxyHandler: X-Presto-Schema->default
+DEBUG [2019-08-24 01:26:06,215] com.lyft.data.proxyserver.ProxyHandler: X-Presto-User->appdemo
+DEBUG [2019-08-24 01:26:06,215] com.lyft.data.proxyserver.ProxyHandler: proxytarget->http://47.52.58.151:8080
+DEBUG [2019-08-24 01:26:06,218] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 1544015350 proxying to upstream:
+POST /v1/statement HTTP/1.1
+X-Presto-Routing-Group: adhoc
+Transfer-Encoding: chunked
+User-Agent: presto-client-node 0.6.1
+Connection: close
+X-Presto-Source: nodejs-client
+Host: localhost:8888
+X-Presto-Catalog: memory
+X-Presto-Schema: default
+X-Presto-User: appdemo
+proxytarget: http://47.52.58.151:8080
+
+HttpRequest[POST /v1/statement HTTP/1.1]@15e3bf3b
+
+DEBUG [2019-08-24 01:26:06,331] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 1544015350 proxying content to upstream: 21 bytes
+DEBUG [2019-08-24 01:26:06,420] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 1544015350 proxying to downstream:
+HttpResponse[HTTP/1.1 200 OK]@60331912
+Date: Sat, 24 Aug 2019 01:26:06 GMT
+Content-Type: application/json
+X-Content-Type-Options: nosniff
+Content-Length: 603
+
+DEBUG [2019-08-24 01:26:06,422] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: [1544015350] proxying content to downstream: [603] bytes
+DEBUG [2019-08-24 01:26:06,423] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: Response output [{"id":"20190824_012606_00005_bm7k5","infoUri":"http://localhost:8888/ui/query.html?20190824_012606_00005_bm7k5","nextUri":"http://localhost:8888/v1/statement/queued/20190824_012606_00005_bm7k5/xc0fd8610923d4edc879ef931dad7dd30/1","stats":{"state":"QUEUED","queued":true,"scheduled":false,"nodes":0,"totalSplits":0,"queuedSplits":0,"runningSplits":0,"completedSplits":0,"cpuTimeMillis":0,"wallTimeMillis":0,"queuedTimeMillis":0,"elapsedTimeMillis":0,"processedRows":0,"processedBytes":0,"peakMemoryBytes":0,"spilledBytes":0},"warnings":[],"addedPreparedStatements":{},"deallocatedPreparedStatements":[]}
+]
+DEBUG [2019-08-24 01:26:06,423] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: Proxy destination : http://47.52.58.151:8080
+DEBUG [2019-08-24 01:26:06,436] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: QueryId [20190824_012606_00005_bm7k5] mapped with proxy [http://47.52.58.151:8080]
+DEBUG [2019-08-24 01:26:06,442] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 1544015350 proxying successful
+DEBUG [2019-08-24 01:26:06,445] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 1544015350 proxying complete
+DEBUG [2019-08-24 01:26:06,448] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: trying to extract query id from path [/v1/statement/queued/20190824_012606_00005_bm7k5/xc0fd8610923d4edc879ef931dad7dd30/1] or queryString [null]
+DEBUG [2019-08-24 01:26:06,448] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: query id in url [20190824_012606_00005_bm7k5]
+INFO  [2019-08-24 01:26:06,454] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: Rerouting [http://127.0.0.1:8888/v1/statement/queued/20190824_012606_00005_bm7k5/xc0fd8610923d4edc879ef931dad7dd30/1]--> [http://47.52.58.151:8080/v1/statement/queued/20190824_012606_00005_bm7k5/xc0fd8610923d4edc879ef931dad7dd30/1]
+DEBUG [2019-08-24 01:26:06,454] com.lyft.data.proxyserver.ProxyServletImpl: Target : http://47.52.58.151:8080/v1/statement/queued/20190824_012606_00005_bm7k5/xc0fd8610923d4edc879ef931dad7dd30/1
+DEBUG [2019-08-24 01:26:06,454] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 2034243225 rewriting: http://localhost:8888/v1/statement/queued/20190824_012606_00005_bm7k5/xc0fd8610923d4edc879ef931dad7dd30/1 -> http://47.52.58.151:8080/v1/statement/queued/20190824_012606_00005_bm7k5/xc0fd8610923d4edc879ef931dad7dd30/1
+DEBUG [2019-08-24 01:26:06,454] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 2034243225 proxying to upstream:
+GET /v1/statement/queued/20190824_012606_00005_bm7k5/xc0fd8610923d4edc879ef931dad7dd30/1 HTTP/1.1
+Connection: close
+Host: localhost:8888
+proxytarget: http://47.52.58.151:8080
+
+HttpRequest[GET /v1/statement/queued/20190824_012606_00005_bm7k5/xc0fd8610923d4edc879ef931dad7dd30/1 HTTP/1.1]@4aecf48f
+
+DEBUG [2019-08-24 01:26:06,552] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 2034243225 proxying to downstream:
+HttpResponse[HTTP/1.1 200 OK]@60f11ab1
+Date: Sat, 24 Aug 2019 01:26:06 GMT
+Content-Type: application/json
+X-Content-Type-Options: nosniff
+Vary: Accept-Encoding, User-Agent
+Content-Length: 603
+
+DEBUG [2019-08-24 01:26:06,552] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: [2034243225] proxying content to downstream: [603] bytes
+DEBUG [2019-08-24 01:26:06,552] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: SKIPPING For /v1/statement/queued/20190824_012606_00005_bm7k5/xc0fd8610923d4edc879ef931dad7dd30/1
+DEBUG [2019-08-24 01:26:06,552] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 2034243225 proxying successful
+DEBUG [2019-08-24 01:26:06,553] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 2034243225 proxying complete
+DEBUG [2019-08-24 01:26:07,364] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: trying to extract query id from path [/v1/statement/queued/20190824_012606_00005_bm7k5/xc0fd8610923d4edc879ef931dad7dd30/2] or queryString [null]
+DEBUG [2019-08-24 01:26:07,364] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: query id in url [20190824_012606_00005_bm7k5]
+INFO  [2019-08-24 01:26:07,364] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: Rerouting [http://127.0.0.1:8888/v1/statement/queued/20190824_012606_00005_bm7k5/xc0fd8610923d4edc879ef931dad7dd30/2]--> [http://47.52.58.151:8080/v1/statement/queued/20190824_012606_00005_bm7k5/xc0fd8610923d4edc879ef931dad7dd30/2]
+DEBUG [2019-08-24 01:26:07,364] com.lyft.data.proxyserver.ProxyServletImpl: Target : http://47.52.58.151:8080/v1/statement/queued/20190824_012606_00005_bm7k5/xc0fd8610923d4edc879ef931dad7dd30/2
+DEBUG [2019-08-24 01:26:07,364] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 2041979091 rewriting: http://localhost:8888/v1/statement/queued/20190824_012606_00005_bm7k5/xc0fd8610923d4edc879ef931dad7dd30/2 -> http://47.52.58.151:8080/v1/statement/queued/20190824_012606_00005_bm7k5/xc0fd8610923d4edc879ef931dad7dd30/2
+DEBUG [2019-08-24 01:26:07,364] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 2041979091 proxying to upstream:
+GET /v1/statement/queued/20190824_012606_00005_bm7k5/xc0fd8610923d4edc879ef931dad7dd30/2 HTTP/1.1
+Connection: close
+Host: localhost:8888
+proxytarget: http://47.52.58.151:8080
+
+HttpRequest[GET /v1/statement/queued/20190824_012606_00005_bm7k5/xc0fd8610923d4edc879ef931dad7dd30/2 HTTP/1.1]@3cb4a181
+
+DEBUG [2019-08-24 01:26:07,475] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 2041979091 proxying to downstream:
+HttpResponse[HTTP/1.1 200 OK]@7fcec431
+Date: Sat, 24 Aug 2019 01:26:07 GMT
+Content-Type: application/json
+X-Content-Type-Options: nosniff
+Vary: Accept-Encoding, User-Agent
+Content-Length: 608
+
+DEBUG [2019-08-24 01:26:07,475] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: [2041979091] proxying content to downstream: [608] bytes
+DEBUG [2019-08-24 01:26:07,475] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: SKIPPING For /v1/statement/queued/20190824_012606_00005_bm7k5/xc0fd8610923d4edc879ef931dad7dd30/2
+DEBUG [2019-08-24 01:26:07,476] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 2041979091 proxying successful
+DEBUG [2019-08-24 01:26:07,476] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 2041979091 proxying complete
+DEBUG [2019-08-24 01:26:08,281] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: trying to extract query id from path [/v1/statement/executing/20190824_012606_00005_bm7k5/xc0fd8610923d4edc879ef931dad7dd30/0] or queryString [null]
+DEBUG [2019-08-24 01:26:08,282] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: query id in url [20190824_012606_00005_bm7k5]
+INFO  [2019-08-24 01:26:08,282] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: Rerouting [http://127.0.0.1:8888/v1/statement/executing/20190824_012606_00005_bm7k5/xc0fd8610923d4edc879ef931dad7dd30/0]--> [http://47.52.58.151:8080/v1/statement/executing/20190824_012606_00005_bm7k5/xc0fd8610923d4edc879ef931dad7dd30/0]
+DEBUG [2019-08-24 01:26:08,282] com.lyft.data.proxyserver.ProxyServletImpl: Target : http://47.52.58.151:8080/v1/statement/executing/20190824_012606_00005_bm7k5/xc0fd8610923d4edc879ef931dad7dd30/0
+DEBUG [2019-08-24 01:26:08,282] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 140413207 rewriting: http://localhost:8888/v1/statement/executing/20190824_012606_00005_bm7k5/xc0fd8610923d4edc879ef931dad7dd30/0 -> http://47.52.58.151:8080/v1/statement/executing/20190824_012606_00005_bm7k5/xc0fd8610923d4edc879ef931dad7dd30/0
+DEBUG [2019-08-24 01:26:08,282] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 140413207 proxying to upstream:
+GET /v1/statement/executing/20190824_012606_00005_bm7k5/xc0fd8610923d4edc879ef931dad7dd30/0 HTTP/1.1
+Connection: close
+Host: localhost:8888
+proxytarget: http://47.52.58.151:8080
+
+HttpRequest[GET /v1/statement/executing/20190824_012606_00005_bm7k5/xc0fd8610923d4edc879ef931dad7dd30/0 HTTP/1.1]@c611cc4
+
+DEBUG [2019-08-24 01:26:08,396] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 140413207 proxying to downstream:
+HttpResponse[HTTP/1.1 200 OK]@66b4a6ed
+Date: Sat, 24 Aug 2019 01:26:08 GMT
+Content-Type: application/json
+X-Content-Type-Options: nosniff
+Vary: Accept-Encoding, User-Agent
+Content-Length: 4069
+
+DEBUG [2019-08-24 01:26:08,396] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: [140413207] proxying content to downstream: [1134] bytes
+DEBUG [2019-08-24 01:26:08,396] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: SKIPPING For /v1/statement/executing/20190824_012606_00005_bm7k5/xc0fd8610923d4edc879ef931dad7dd30/0
+DEBUG [2019-08-24 01:26:08,397] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: [140413207] proxying content to downstream: [2935] bytes
+DEBUG [2019-08-24 01:26:08,397] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: SKIPPING For /v1/statement/executing/20190824_012606_00005_bm7k5/xc0fd8610923d4edc879ef931dad7dd30/0
+DEBUG [2019-08-24 01:26:08,400] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 140413207 proxying successful
+DEBUG [2019-08-24 01:26:08,400] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 140413207 proxying complete
+DEBUG [2019-08-24 01:26:09,226] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: trying to extract query id from path [/v1/statement/executing/20190824_012606_00005_bm7k5/xc0fd8610923d4edc879ef931dad7dd30/1] or queryString [null]
+DEBUG [2019-08-24 01:26:09,226] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: query id in url [20190824_012606_00005_bm7k5]
+INFO  [2019-08-24 01:26:09,226] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: Rerouting [http://127.0.0.1:8888/v1/statement/executing/20190824_012606_00005_bm7k5/xc0fd8610923d4edc879ef931dad7dd30/1]--> [http://47.52.58.151:8080/v1/statement/executing/20190824_012606_00005_bm7k5/xc0fd8610923d4edc879ef931dad7dd30/1]
+DEBUG [2019-08-24 01:26:09,226] com.lyft.data.proxyserver.ProxyServletImpl: Target : http://47.52.58.151:8080/v1/statement/executing/20190824_012606_00005_bm7k5/xc0fd8610923d4edc879ef931dad7dd30/1
+DEBUG [2019-08-24 01:26:09,226] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 1510072829 rewriting: http://localhost:8888/v1/statement/executing/20190824_012606_00005_bm7k5/xc0fd8610923d4edc879ef931dad7dd30/1 -> http://47.52.58.151:8080/v1/statement/executing/20190824_012606_00005_bm7k5/xc0fd8610923d4edc879ef931dad7dd30/1
+DEBUG [2019-08-24 01:26:09,227] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 1510072829 proxying to upstream:
+GET /v1/statement/executing/20190824_012606_00005_bm7k5/xc0fd8610923d4edc879ef931dad7dd30/1 HTTP/1.1
+Connection: close
+Host: localhost:8888
+proxytarget: http://47.52.58.151:8080
+
+HttpRequest[GET /v1/statement/executing/20190824_012606_00005_bm7k5/xc0fd8610923d4edc879ef931dad7dd30/1 HTTP/1.1]@100e3931
+
+DEBUG [2019-08-24 01:26:09,313] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 1510072829 proxying to downstream:
+HttpResponse[HTTP/1.1 200 OK]@55646f35
+Date: Sat, 24 Aug 2019 01:26:09 GMT
+Content-Type: application/json
+X-Content-Type-Options: nosniff
+Vary: Accept-Encoding, User-Agent
+Content-Length: 1590
+
+DEBUG [2019-08-24 01:26:09,313] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: [1510072829] proxying content to downstream: [1134] bytes
+DEBUG [2019-08-24 01:26:09,313] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: SKIPPING For /v1/statement/executing/20190824_012606_00005_bm7k5/xc0fd8610923d4edc879ef931dad7dd30/1
+DEBUG [2019-08-24 01:26:09,313] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: [1510072829] proxying content to downstream: [456] bytes
+DEBUG [2019-08-24 01:26:09,313] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: SKIPPING For /v1/statement/executing/20190824_012606_00005_bm7k5/xc0fd8610923d4edc879ef931dad7dd30/1
+DEBUG [2019-08-24 01:26:09,314] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 1510072829 proxying successful
+DEBUG [2019-08-24 01:26:09,314] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 1510072829 proxying complete
+INFO  [2019-08-24 01:31:46,998] org.eclipse.jetty.server.AbstractConnector: Stopped application@3249e278{HTTP/1.1,[http/1.1]}{0.0.0.0:8090}
+INFO  [2019-08-24 01:31:47,000] org.eclipse.jetty.server.AbstractConnector: Stopped admin@35adf623{HTTP/1.1,[http/1.1]}{0.0.0.0:8091}
+INFO  [2019-08-24 01:31:47,001] org.eclipse.jetty.server.handler.ContextHandler: Stopped i.d.j.MutableServletContextHandler@2fb082ff{/,null,UNAVAILABLE}
+INFO  [2019-08-24 01:31:47,012] org.eclipse.jetty.server.handler.ContextHandler: Stopped i.d.j.MutableServletContextHandler@3a861417{/,null,UNAVAILABLE}
+INFO  [2019-08-24 01:31:47,015] org.eclipse.jetty.server.AbstractConnector: Stopped prestoRouter@52b959df{HTTP/1.1,[http/1.1]}{0.0.0.0:8888}
+INFO  [2019-08-24 01:31:47,015] org.eclipse.jetty.server.session: Stopped scavenging
+INFO  [2019-08-24 01:31:47,017] org.eclipse.jetty.server.handler.ContextHandler: Stopped o.e.j.s.ServletContextHandler@64518270{/,null,UNAVAILABLE}
+INFO  [2019-08-24 01:31:47,019] org.eclipse.jetty.server.AbstractConnector: Stopped presto1@7ab802f4{HTTP/1.1,[http/1.1]}{0.0.0.0:8082}
+INFO  [2019-08-24 01:31:47,019] org.eclipse.jetty.server.session: Stopped scavenging
+INFO  [2019-08-24 01:31:47,020] org.eclipse.jetty.server.handler.ContextHandler: Stopped o.e.j.s.ServletContextHandler@38fb50f8{/,null,UNAVAILABLE}
+INFO  [2019-08-24 01:31:47,022] org.eclipse.jetty.server.AbstractConnector: Stopped presto2@24dd44f9{HTTP/1.1,[http/1.1]}{0.0.0.0:8083}
+INFO  [2019-08-24 01:31:47,022] org.eclipse.jetty.server.session: Stopped scavenging
+INFO  [2019-08-24 01:31:47,023] org.eclipse.jetty.server.handler.ContextHandler: Stopped o.e.j.s.ServletContextHandler@4dad8ec0{/,null,UNAVAILABLE}
+INFO  [2019-08-24 01:32:09,774] io.dropwizard.server.DefaultServerFactory: Registering jersey handler with root path prefix: /
+INFO  [2019-08-24 01:32:09,777] io.dropwizard.server.DefaultServerFactory: Registering admin handler with root path prefix: /
+INFO  [2019-08-24 01:32:09,777] io.dropwizard.assets.AssetsBundle: Registering AssetBundle with name: assets for path /assets/*
+INFO  [2019-08-24 01:32:09,816] com.lyft.data.gateway.GatewayLauncher: Trying to load module [com.lyft.data.gateway.module.ProxyBackendProviderModule]
+INFO  [2019-08-24 01:32:09,817] com.lyft.data.gateway.GatewayLauncher: Trying to load module [com.lyft.data.gateway.module.GatewayProviderModule]
+WARN  [2019-08-24 01:32:09,824] com.lyft.data.gateway.router.impl.GatewayBackendManagerImpl: No previous backend cluster state found - ./var/log/prestoproxy/cache/presto_cluster_state.json (No such file or directory)
+INFO  [2019-08-24 01:32:09,825] com.lyft.data.gateway.GatewayLauncher: Trying to load module [com.lyft.data.gateway.module.NotifierModule]
+INFO  [2019-08-24 01:32:10,051] com.lyft.data.baseapp.BaseApp: op=register_start configuration=GatewayConfiguration(requestRouter=RequestRouterConfiguration(port=8888, name=prestoRouter, cacheDir=./var/log/prestoproxy/cache, ssl=false, keystorePath=null, keystorePass=null, historySize=1000), notifier=NotifierConfiguration(startTlsEnabled=false, smtpAuthEnabled=false, smtpHost=localhost, smtpPort=587, smtpUser=null, smtpPassword=null, sender=presto-gw-monitor-noreply@lyft.com, recipients=[prestodev@yourorg.com]), backends=[ProxyBackendConfiguration(includeInRouter=true, active=true, routingGroup=adhoc), ProxyBackendConfiguration(includeInRouter=true, active=true, routingGroup=adhoc2)], modules=[com.lyft.data.gateway.module.ProxyBackendProviderModule, com.lyft.data.gateway.module.GatewayProviderModule, com.lyft.data.gateway.module.NotifierModule], managedApps=[com.lyft.data.gateway.GatewayManagedApp, com.lyft.data.gateway.ActiveClusterMonitor])
+DEBUG [2019-08-24 01:32:10,075] com.lyft.data.gateway.module.ProxyBackendProviderModule: Starting proxy backend [presto1]
+DEBUG [2019-08-24 01:32:10,136] com.lyft.data.gateway.module.ProxyBackendProviderModule: Starting proxy backend [presto2]
+INFO  [2019-08-24 01:32:10,415] org.terracotta.offheapstore.paging.UpfrontAllocatingPageSource: Allocating 100.0MB in chunks
+INFO  [2019-08-24 01:32:10,548] org.ehcache.core.EhcacheManager: Cache 'queryIdBackendPersistentCache' created in EhcacheManager.
+INFO  [2019-08-24 01:32:10,555] com.lyft.data.gateway.GatewayLauncher: op=register type=managed item=class com.lyft.data.gateway.GatewayManagedApp
+INFO  [2019-08-24 01:32:10,564] com.lyft.data.gateway.GatewayLauncher: op=register type=managed item=class com.lyft.data.gateway.ActiveClusterMonitor
+INFO  [2019-08-24 01:32:10,576] com.lyft.data.baseapp.BaseApp: op=register type=resource item=class com.lyft.data.gateway.resource.GatewayResource
+INFO  [2019-08-24 01:32:10,581] com.lyft.data.baseapp.BaseApp: op=register type=resource item=class com.lyft.data.gateway.resource.GatewayViewResource
+INFO  [2019-08-24 01:32:10,583] com.lyft.data.baseapp.BaseApp: op=register_end configuration=GatewayConfiguration(requestRouter=RequestRouterConfiguration(port=8888, name=prestoRouter, cacheDir=./var/log/prestoproxy/cache, ssl=false, keystorePath=null, keystorePass=null, historySize=1000), notifier=NotifierConfiguration(startTlsEnabled=false, smtpAuthEnabled=false, smtpHost=localhost, smtpPort=587, smtpUser=null, smtpPassword=null, sender=presto-gw-monitor-noreply@lyft.com, recipients=[prestodev@yourorg.com]), backends=[ProxyBackendConfiguration(includeInRouter=true, active=true, routingGroup=adhoc), ProxyBackendConfiguration(includeInRouter=true, active=true, routingGroup=adhoc2)], modules=[com.lyft.data.gateway.module.ProxyBackendProviderModule, com.lyft.data.gateway.module.GatewayProviderModule, com.lyft.data.gateway.module.NotifierModule], managedApps=[com.lyft.data.gateway.GatewayManagedApp, com.lyft.data.gateway.ActiveClusterMonitor])
+INFO  [2019-08-24 01:32:10,591] com.lyft.data.baseapp.BaseApp: op=configure_guice injector=Injector{bindings=[InstanceBinding{key=Key[type=com.google.inject.Stage, annotation=[none]], source=[unknown source], instance=DEVELOPMENT}, ProviderInstanceBinding{key=Key[type=com.google.inject.Injector, annotation=[none]], source=[unknown source], scope=Scopes.NO_SCOPE, provider=Provider<Injector>}, ProviderInstanceBinding{key=Key[type=java.util.logging.Logger, annotation=[none]], source=[unknown source], scope=Scopes.NO_SCOPE, provider=Provider<Logger>}, InstanceBinding{key=Key[type=com.codahale.metrics.MetricRegistry, annotation=[none]], source=com.lyft.data.baseapp.MetricRegistryModule.configure(MetricRegistryModule.java:19), instance=com.codahale.metrics.MetricRegistry@5a0e0886}, ProviderInstanceBinding{key=Key[type=java.util.List<com.lyft.data.proxyserver.ProxyServer>, annotation=[none]], source=public java.util.List com.lyft.data.gateway.module.ProxyBackendProviderModule.getProxyServers(), scope=Scopes.SINGLETON, provider=@Provides com.lyft.data.gateway.module.ProxyBackendProviderModule.getProxyServers(ProxyBackendProviderModule.java:29)}, ProviderInstanceBinding{key=Key[type=com.lyft.data.proxyserver.ProxyServer, annotation=[none]], source=public com.lyft.data.proxyserver.ProxyServer com.lyft.data.gateway.module.GatewayProviderModule.provideGateway(), scope=Scopes.SINGLETON, provider=@Provides com.lyft.data.gateway.module.GatewayProviderModule.provideGateway(GatewayProviderModule.java:71)}, ProviderInstanceBinding{key=Key[type=com.lyft.data.gateway.router.GatewayBackendManager, annotation=[none]], source=public com.lyft.data.gateway.router.GatewayBackendManager com.lyft.data.gateway.module.GatewayProviderModule.getGatewayBackendManager(), scope=Scopes.SINGLETON, provider=@Provides com.lyft.data.gateway.module.GatewayProviderModule.getGatewayBackendManager(GatewayProviderModule.java:93)}, ProviderInstanceBinding{key=Key[type=com.lyft.data.gateway.router.QueryHistoryManager, annotation=[none]], source=public com.lyft.data.gateway.router.QueryHistoryManager com.lyft.data.gateway.module.GatewayProviderModule.getQueryHistoryManager(), scope=Scopes.SINGLETON, provider=@Provides com.lyft.data.gateway.module.GatewayProviderModule.getQueryHistoryManager(GatewayProviderModule.java:99)}, ProviderInstanceBinding{key=Key[type=com.lyft.data.gateway.notifier.Notifier, annotation=[none]], source=public com.lyft.data.gateway.notifier.Notifier com.lyft.data.gateway.module.NotifierModule.provideNotifier(), scope=Scopes.SINGLETON, provider=@Provides com.lyft.data.gateway.module.NotifierModule.provideNotifier(NotifierModule.java:21)}]}
+INFO  [2019-08-24 01:32:10,591] com.lyft.data.baseapp.BaseApp: op=configure_app_custom completed
+INFO  [2019-08-24 01:32:10,593] io.dropwizard.server.ServerFactory: Starting GatewayLauncher
+INFO  [2019-08-24 01:32:10,685] org.eclipse.jetty.setuid.SetUIDListener: Opened application@3249e278{HTTP/1.1,[http/1.1]}{0.0.0.0:8090}
+INFO  [2019-08-24 01:32:10,685] org.eclipse.jetty.setuid.SetUIDListener: Opened admin@35adf623{HTTP/1.1,[http/1.1]}{0.0.0.0:8091}
+INFO  [2019-08-24 01:32:10,688] org.eclipse.jetty.server.Server: jetty-9.4.9.v20180320; built: 2018-03-20T20:21:10+08:00; git: 1f8159b1e4a42d3f79997021ea1609f2fbac6de5; jvm 1.8.0_161-b12
+INFO  [2019-08-24 01:32:10,701] org.eclipse.jetty.server.Server: jetty-9.4.9.v20180320; built: 2018-03-20T20:21:10+08:00; git: 1f8159b1e4a42d3f79997021ea1609f2fbac6de5; jvm 1.8.0_161-b12
+INFO  [2019-08-24 01:32:10,711] org.eclipse.jetty.server.session: DefaultSessionIdManager workerName=node0
+INFO  [2019-08-24 01:32:10,712] org.eclipse.jetty.server.session: No SessionScavenger set, using defaults
+INFO  [2019-08-24 01:32:10,713] org.eclipse.jetty.server.session: Scavenging every 660000ms
+DEBUG [2019-08-24 01:32:11,046] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: prestoRouter @ / to 
+INFO  [2019-08-24 01:32:11,046] org.eclipse.jetty.server.handler.ContextHandler: Started o.e.j.s.ServletContextHandler@64518270{/,null,AVAILABLE}
+INFO  [2019-08-24 01:32:11,049] org.eclipse.jetty.server.AbstractConnector: Started prestoRouter@52b959df{HTTP/1.1,[http/1.1]}{0.0.0.0:8888}
+INFO  [2019-08-24 01:32:11,049] org.eclipse.jetty.server.Server: Started @3616ms
+INFO  [2019-08-24 01:32:11,049] org.eclipse.jetty.server.Server: jetty-9.4.9.v20180320; built: 2018-03-20T20:21:10+08:00; git: 1f8159b1e4a42d3f79997021ea1609f2fbac6de5; jvm 1.8.0_161-b12
+INFO  [2019-08-24 01:32:11,050] org.eclipse.jetty.server.session: DefaultSessionIdManager workerName=node0
+INFO  [2019-08-24 01:32:11,050] org.eclipse.jetty.server.session: No SessionScavenger set, using defaults
+INFO  [2019-08-24 01:32:11,050] org.eclipse.jetty.server.session: Scavenging every 660000ms
+DEBUG [2019-08-24 01:32:11,052] com.lyft.data.proxyserver.ProxyServletImpl.presto1: presto1 @ / to http://47.52.58.151:8080
+INFO  [2019-08-24 01:32:11,052] org.eclipse.jetty.server.handler.ContextHandler: Started o.e.j.s.ServletContextHandler@38fb50f8{/,null,AVAILABLE}
+INFO  [2019-08-24 01:32:11,052] org.eclipse.jetty.server.AbstractConnector: Started presto1@7ab802f4{HTTP/1.1,[http/1.1]}{0.0.0.0:8082}
+INFO  [2019-08-24 01:32:11,052] org.eclipse.jetty.server.Server: Started @3619ms
+INFO  [2019-08-24 01:32:11,053] org.eclipse.jetty.server.Server: jetty-9.4.9.v20180320; built: 2018-03-20T20:21:10+08:00; git: 1f8159b1e4a42d3f79997021ea1609f2fbac6de5; jvm 1.8.0_161-b12
+INFO  [2019-08-24 01:32:11,054] org.eclipse.jetty.server.session: DefaultSessionIdManager workerName=node0
+INFO  [2019-08-24 01:32:11,054] org.eclipse.jetty.server.session: No SessionScavenger set, using defaults
+INFO  [2019-08-24 01:32:11,054] org.eclipse.jetty.server.session: Scavenging every 660000ms
+DEBUG [2019-08-24 01:32:11,055] com.lyft.data.proxyserver.ProxyServletImpl.presto2: presto2 @ / to http://47.52.58.151:8081
+INFO  [2019-08-24 01:32:11,055] org.eclipse.jetty.server.handler.ContextHandler: Started o.e.j.s.ServletContextHandler@4dad8ec0{/,null,AVAILABLE}
+INFO  [2019-08-24 01:32:11,056] org.eclipse.jetty.server.AbstractConnector: Started presto2@24dd44f9{HTTP/1.1,[http/1.1]}{0.0.0.0:8083}
+INFO  [2019-08-24 01:32:11,056] org.eclipse.jetty.server.Server: Started @3623ms
+INFO  [2019-08-24 01:32:11,643] io.dropwizard.jersey.DropwizardResourceConfig: The following paths were found for the configured resources:
+
+    GET     / (com.lyft.data.gateway.resource.GatewayViewResource)
+    GET     /api/activeBackends (com.lyft.data.gateway.resource.GatewayViewResource)
+    GET     /api/queryHistory (com.lyft.data.gateway.resource.GatewayViewResource)
+    GET     /api/queryHistoryDistribution (com.lyft.data.gateway.resource.GatewayViewResource)
+    GET     /gateway (com.lyft.data.gateway.resource.GatewayResource)
+    POST    /gateway/backend/activate/{name} (com.lyft.data.gateway.resource.GatewayResource)
+    GET     /gateway/backend/active (com.lyft.data.gateway.resource.GatewayResource)
+    GET     /gateway/backend/all (com.lyft.data.gateway.resource.GatewayResource)
+    POST    /gateway/backend/deactivate/{name} (com.lyft.data.gateway.resource.GatewayResource)
+
+INFO  [2019-08-24 01:32:11,644] org.eclipse.jetty.server.handler.ContextHandler: Started i.d.j.MutableServletContextHandler@3a861417{/,null,AVAILABLE}
+INFO  [2019-08-24 01:32:11,650] io.dropwizard.setup.AdminEnvironment: tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+
+WARN  [2019-08-24 01:32:11,650] io.dropwizard.setup.AdminEnvironment: 
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!    THIS APPLICATION HAS NO HEALTHCHECKS. THIS MEANS YOU WILL NEVER KNOW      !
+!     IF IT DIES IN PRODUCTION, WHICH MEANS YOU WILL NEVER KNOW IF YOU'RE      !
+!    LETTING YOUR USERS DOWN. YOU SHOULD ADD A HEALTHCHECK FOR EACH OF YOUR    !
+!         APPLICATION'S DEPENDENCIES WHICH FULLY (BUT LIGHTLY) TESTS IT.       !
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+INFO  [2019-08-24 01:32:11,656] org.eclipse.jetty.server.handler.ContextHandler: Started i.d.j.MutableServletContextHandler@2fb082ff{/,null,AVAILABLE}
+INFO  [2019-08-24 01:32:11,657] org.eclipse.jetty.server.AbstractConnector: Started application@3249e278{HTTP/1.1,[http/1.1]}{0.0.0.0:8090}
+INFO  [2019-08-24 01:32:11,658] org.eclipse.jetty.server.AbstractConnector: Started admin@35adf623{HTTP/1.1,[http/1.1]}{0.0.0.0:8091}
+INFO  [2019-08-24 01:32:11,658] org.eclipse.jetty.server.Server: Started @4225ms
+DEBUG [2019-08-24 01:32:19,010] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: trying to extract query id from path [/v1/statement] or queryString [null]
+DEBUG [2019-08-24 01:32:19,011] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: query id in url [null]
+INFO  [2019-08-24 01:32:19,011] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: Rerouting [http://127.0.0.1:8888/v1/statement]--> [http://47.52.58.151:8080/v1/statement]
+DEBUG [2019-08-24 01:32:19,012] com.lyft.data.proxyserver.ProxyServletImpl: Target : http://47.52.58.151:8080/v1/statement
+DEBUG [2019-08-24 01:32:19,012] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 1638353467 rewriting: http://localhost:8888/v1/statement -> http://47.52.58.151:8080/v1/statement
+INFO  [2019-08-24 01:32:19,015] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: Processing request endpoint: [/v1/statement], payload: [select  * from nation]
+DEBUG [2019-08-24 01:32:19,015] com.lyft.data.proxyserver.ProxyHandler: -------HttpServletRequest headers---------
+DEBUG [2019-08-24 01:32:19,015] com.lyft.data.proxyserver.ProxyHandler: X-Presto-Routing-Group->adhoc
+DEBUG [2019-08-24 01:32:19,015] com.lyft.data.proxyserver.ProxyHandler: Transfer-Encoding->chunked
+DEBUG [2019-08-24 01:32:19,015] com.lyft.data.proxyserver.ProxyHandler: User-Agent->presto-client-node 0.6.1
+DEBUG [2019-08-24 01:32:19,015] com.lyft.data.proxyserver.ProxyHandler: Connection->close
+DEBUG [2019-08-24 01:32:19,015] com.lyft.data.proxyserver.ProxyHandler: X-Presto-Source->nodejs-client
+DEBUG [2019-08-24 01:32:19,015] com.lyft.data.proxyserver.ProxyHandler: Host->localhost:8888
+DEBUG [2019-08-24 01:32:19,015] com.lyft.data.proxyserver.ProxyHandler: X-Presto-Catalog->memory
+DEBUG [2019-08-24 01:32:19,015] com.lyft.data.proxyserver.ProxyHandler: X-Presto-Schema->default
+DEBUG [2019-08-24 01:32:19,015] com.lyft.data.proxyserver.ProxyHandler: X-Presto-User->appdemo
+DEBUG [2019-08-24 01:32:19,015] com.lyft.data.proxyserver.ProxyHandler: proxytarget->http://47.52.58.151:8080
+DEBUG [2019-08-24 01:32:19,018] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 1638353467 proxying to upstream:
+POST /v1/statement HTTP/1.1
+X-Presto-Routing-Group: adhoc
+Transfer-Encoding: chunked
+User-Agent: presto-client-node 0.6.1
+Connection: close
+X-Presto-Source: nodejs-client
+Host: localhost:8888
+X-Presto-Catalog: memory
+X-Presto-Schema: default
+X-Presto-User: appdemo
+proxytarget: http://47.52.58.151:8080
+
+HttpRequest[POST /v1/statement HTTP/1.1]@2e586311
+
+DEBUG [2019-08-24 01:32:19,131] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 1638353467 proxying content to upstream: 21 bytes
+DEBUG [2019-08-24 01:32:19,211] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 1638353467 proxying to downstream:
+HttpResponse[HTTP/1.1 200 OK]@60331912
+Date: Sat, 24 Aug 2019 01:32:19 GMT
+Content-Type: application/json
+X-Content-Type-Options: nosniff
+Content-Length: 603
+
+DEBUG [2019-08-24 01:32:19,214] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: [1638353467] proxying content to downstream: [603] bytes
+DEBUG [2019-08-24 01:32:19,214] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: Response output [{"id":"20190824_013219_00007_bm7k5","infoUri":"http://localhost:8888/ui/query.html?20190824_013219_00007_bm7k5","nextUri":"http://localhost:8888/v1/statement/queued/20190824_013219_00007_bm7k5/x0dde2494499d4435b08ab5c7702d1de8/1","stats":{"state":"QUEUED","queued":true,"scheduled":false,"nodes":0,"totalSplits":0,"queuedSplits":0,"runningSplits":0,"completedSplits":0,"cpuTimeMillis":0,"wallTimeMillis":0,"queuedTimeMillis":0,"elapsedTimeMillis":0,"processedRows":0,"processedBytes":0,"peakMemoryBytes":0,"spilledBytes":0},"warnings":[],"addedPreparedStatements":{},"deallocatedPreparedStatements":[]}
+]
+DEBUG [2019-08-24 01:32:19,214] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: Proxy destination : http://47.52.58.151:8080
+DEBUG [2019-08-24 01:32:19,227] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: QueryId [20190824_013219_00007_bm7k5] mapped with proxy [http://47.52.58.151:8080]
+DEBUG [2019-08-24 01:32:19,232] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 1638353467 proxying successful
+DEBUG [2019-08-24 01:32:19,235] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 1638353467 proxying complete
+DEBUG [2019-08-24 01:32:19,238] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: trying to extract query id from path [/v1/statement/queued/20190824_013219_00007_bm7k5/x0dde2494499d4435b08ab5c7702d1de8/1] or queryString [null]
+DEBUG [2019-08-24 01:32:19,238] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: query id in url [20190824_013219_00007_bm7k5]
+INFO  [2019-08-24 01:32:19,244] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: Rerouting [http://127.0.0.1:8888/v1/statement/queued/20190824_013219_00007_bm7k5/x0dde2494499d4435b08ab5c7702d1de8/1]--> [http://47.52.58.151:8080/v1/statement/queued/20190824_013219_00007_bm7k5/x0dde2494499d4435b08ab5c7702d1de8/1]
+DEBUG [2019-08-24 01:32:19,245] com.lyft.data.proxyserver.ProxyServletImpl: Target : http://47.52.58.151:8080/v1/statement/queued/20190824_013219_00007_bm7k5/x0dde2494499d4435b08ab5c7702d1de8/1
+DEBUG [2019-08-24 01:32:19,245] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 2034243225 rewriting: http://localhost:8888/v1/statement/queued/20190824_013219_00007_bm7k5/x0dde2494499d4435b08ab5c7702d1de8/1 -> http://47.52.58.151:8080/v1/statement/queued/20190824_013219_00007_bm7k5/x0dde2494499d4435b08ab5c7702d1de8/1
+DEBUG [2019-08-24 01:32:19,245] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 2034243225 proxying to upstream:
+GET /v1/statement/queued/20190824_013219_00007_bm7k5/x0dde2494499d4435b08ab5c7702d1de8/1 HTTP/1.1
+Connection: close
+Host: localhost:8888
+proxytarget: http://47.52.58.151:8080
+
+HttpRequest[GET /v1/statement/queued/20190824_013219_00007_bm7k5/x0dde2494499d4435b08ab5c7702d1de8/1 HTTP/1.1]@4aecf48f
+
+DEBUG [2019-08-24 01:32:19,325] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 2034243225 proxying to downstream:
+HttpResponse[HTTP/1.1 200 OK]@730da882
+Date: Sat, 24 Aug 2019 01:32:19 GMT
+Content-Type: application/json
+X-Content-Type-Options: nosniff
+Vary: Accept-Encoding, User-Agent
+Content-Length: 603
+
+DEBUG [2019-08-24 01:32:19,325] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: [2034243225] proxying content to downstream: [603] bytes
+DEBUG [2019-08-24 01:32:19,325] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: SKIPPING For /v1/statement/queued/20190824_013219_00007_bm7k5/x0dde2494499d4435b08ab5c7702d1de8/1
+DEBUG [2019-08-24 01:32:19,326] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 2034243225 proxying successful
+DEBUG [2019-08-24 01:32:19,326] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 2034243225 proxying complete
+DEBUG [2019-08-24 01:32:20,135] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: trying to extract query id from path [/v1/statement/queued/20190824_013219_00007_bm7k5/x0dde2494499d4435b08ab5c7702d1de8/2] or queryString [null]
+DEBUG [2019-08-24 01:32:20,135] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: query id in url [20190824_013219_00007_bm7k5]
+INFO  [2019-08-24 01:32:20,135] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: Rerouting [http://127.0.0.1:8888/v1/statement/queued/20190824_013219_00007_bm7k5/x0dde2494499d4435b08ab5c7702d1de8/2]--> [http://47.52.58.151:8080/v1/statement/queued/20190824_013219_00007_bm7k5/x0dde2494499d4435b08ab5c7702d1de8/2]
+DEBUG [2019-08-24 01:32:20,135] com.lyft.data.proxyserver.ProxyServletImpl: Target : http://47.52.58.151:8080/v1/statement/queued/20190824_013219_00007_bm7k5/x0dde2494499d4435b08ab5c7702d1de8/2
+DEBUG [2019-08-24 01:32:20,135] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 1586588875 rewriting: http://localhost:8888/v1/statement/queued/20190824_013219_00007_bm7k5/x0dde2494499d4435b08ab5c7702d1de8/2 -> http://47.52.58.151:8080/v1/statement/queued/20190824_013219_00007_bm7k5/x0dde2494499d4435b08ab5c7702d1de8/2
+DEBUG [2019-08-24 01:32:20,135] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 1586588875 proxying to upstream:
+GET /v1/statement/queued/20190824_013219_00007_bm7k5/x0dde2494499d4435b08ab5c7702d1de8/2 HTTP/1.1
+Connection: close
+Host: localhost:8888
+proxytarget: http://47.52.58.151:8080
+
+HttpRequest[GET /v1/statement/queued/20190824_013219_00007_bm7k5/x0dde2494499d4435b08ab5c7702d1de8/2 HTTP/1.1]@1b93e97d
+
+DEBUG [2019-08-24 01:32:20,208] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 1586588875 proxying to downstream:
+HttpResponse[HTTP/1.1 200 OK]@7fcec431
+Date: Sat, 24 Aug 2019 01:32:20 GMT
+Content-Type: application/json
+X-Content-Type-Options: nosniff
+Vary: Accept-Encoding, User-Agent
+Content-Length: 608
+
+DEBUG [2019-08-24 01:32:20,208] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: [1586588875] proxying content to downstream: [608] bytes
+DEBUG [2019-08-24 01:32:20,208] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: SKIPPING For /v1/statement/queued/20190824_013219_00007_bm7k5/x0dde2494499d4435b08ab5c7702d1de8/2
+DEBUG [2019-08-24 01:32:20,209] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 1586588875 proxying successful
+DEBUG [2019-08-24 01:32:20,209] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 1586588875 proxying complete
+DEBUG [2019-08-24 01:32:21,013] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: trying to extract query id from path [/v1/statement/executing/20190824_013219_00007_bm7k5/x0dde2494499d4435b08ab5c7702d1de8/0] or queryString [null]
+DEBUG [2019-08-24 01:32:21,013] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: query id in url [20190824_013219_00007_bm7k5]
+INFO  [2019-08-24 01:32:21,013] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: Rerouting [http://127.0.0.1:8888/v1/statement/executing/20190824_013219_00007_bm7k5/x0dde2494499d4435b08ab5c7702d1de8/0]--> [http://47.52.58.151:8080/v1/statement/executing/20190824_013219_00007_bm7k5/x0dde2494499d4435b08ab5c7702d1de8/0]
+DEBUG [2019-08-24 01:32:21,013] com.lyft.data.proxyserver.ProxyServletImpl: Target : http://47.52.58.151:8080/v1/statement/executing/20190824_013219_00007_bm7k5/x0dde2494499d4435b08ab5c7702d1de8/0
+DEBUG [2019-08-24 01:32:21,013] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 140413207 rewriting: http://localhost:8888/v1/statement/executing/20190824_013219_00007_bm7k5/x0dde2494499d4435b08ab5c7702d1de8/0 -> http://47.52.58.151:8080/v1/statement/executing/20190824_013219_00007_bm7k5/x0dde2494499d4435b08ab5c7702d1de8/0
+DEBUG [2019-08-24 01:32:21,013] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 140413207 proxying to upstream:
+GET /v1/statement/executing/20190824_013219_00007_bm7k5/x0dde2494499d4435b08ab5c7702d1de8/0 HTTP/1.1
+Connection: close
+Host: localhost:8888
+proxytarget: http://47.52.58.151:8080
+
+HttpRequest[GET /v1/statement/executing/20190824_013219_00007_bm7k5/x0dde2494499d4435b08ab5c7702d1de8/0 HTTP/1.1]@c611cc4
+
+DEBUG [2019-08-24 01:32:21,096] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 140413207 proxying to downstream:
+HttpResponse[HTTP/1.1 200 OK]@66b4a6ed
+Date: Sat, 24 Aug 2019 01:32:21 GMT
+Content-Type: application/json
+X-Content-Type-Options: nosniff
+Vary: Accept-Encoding, User-Agent
+Content-Length: 4157
+
+DEBUG [2019-08-24 01:32:21,096] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: [140413207] proxying content to downstream: [1134] bytes
+DEBUG [2019-08-24 01:32:21,096] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: SKIPPING For /v1/statement/executing/20190824_013219_00007_bm7k5/x0dde2494499d4435b08ab5c7702d1de8/0
+DEBUG [2019-08-24 01:32:21,102] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: [140413207] proxying content to downstream: [1312] bytes
+DEBUG [2019-08-24 01:32:21,102] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: SKIPPING For /v1/statement/executing/20190824_013219_00007_bm7k5/x0dde2494499d4435b08ab5c7702d1de8/0
+DEBUG [2019-08-24 01:32:21,103] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: [140413207] proxying content to downstream: [1711] bytes
+DEBUG [2019-08-24 01:32:21,103] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: SKIPPING For /v1/statement/executing/20190824_013219_00007_bm7k5/x0dde2494499d4435b08ab5c7702d1de8/0
+DEBUG [2019-08-24 01:32:21,105] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 140413207 proxying successful
+DEBUG [2019-08-24 01:32:21,106] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 140413207 proxying complete
+DEBUG [2019-08-24 01:32:21,938] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: trying to extract query id from path [/v1/statement/executing/20190824_013219_00007_bm7k5/x0dde2494499d4435b08ab5c7702d1de8/1] or queryString [null]
+DEBUG [2019-08-24 01:32:21,938] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: query id in url [20190824_013219_00007_bm7k5]
+INFO  [2019-08-24 01:32:21,938] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: Rerouting [http://127.0.0.1:8888/v1/statement/executing/20190824_013219_00007_bm7k5/x0dde2494499d4435b08ab5c7702d1de8/1]--> [http://47.52.58.151:8080/v1/statement/executing/20190824_013219_00007_bm7k5/x0dde2494499d4435b08ab5c7702d1de8/1]
+DEBUG [2019-08-24 01:32:21,938] com.lyft.data.proxyserver.ProxyServletImpl: Target : http://47.52.58.151:8080/v1/statement/executing/20190824_013219_00007_bm7k5/x0dde2494499d4435b08ab5c7702d1de8/1
+DEBUG [2019-08-24 01:32:21,938] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 394984736 rewriting: http://localhost:8888/v1/statement/executing/20190824_013219_00007_bm7k5/x0dde2494499d4435b08ab5c7702d1de8/1 -> http://47.52.58.151:8080/v1/statement/executing/20190824_013219_00007_bm7k5/x0dde2494499d4435b08ab5c7702d1de8/1
+DEBUG [2019-08-24 01:32:21,938] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 394984736 proxying to upstream:
+GET /v1/statement/executing/20190824_013219_00007_bm7k5/x0dde2494499d4435b08ab5c7702d1de8/1 HTTP/1.1
+Connection: close
+Host: localhost:8888
+proxytarget: http://47.52.58.151:8080
+
+HttpRequest[GET /v1/statement/executing/20190824_013219_00007_bm7k5/x0dde2494499d4435b08ab5c7702d1de8/1 HTTP/1.1]@69d44289
+
+DEBUG [2019-08-24 01:32:22,016] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 394984736 proxying to downstream:
+HttpResponse[HTTP/1.1 200 OK]@7cad60f6
+Date: Sat, 24 Aug 2019 01:32:21 GMT
+Content-Type: application/json
+X-Content-Type-Options: nosniff
+Vary: Accept-Encoding, User-Agent
+Content-Length: 1590
+
+DEBUG [2019-08-24 01:32:22,016] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: [394984736] proxying content to downstream: [1134] bytes
+DEBUG [2019-08-24 01:32:22,016] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: SKIPPING For /v1/statement/executing/20190824_013219_00007_bm7k5/x0dde2494499d4435b08ab5c7702d1de8/1
+DEBUG [2019-08-24 01:32:22,016] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: [394984736] proxying content to downstream: [456] bytes
+DEBUG [2019-08-24 01:32:22,017] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: SKIPPING For /v1/statement/executing/20190824_013219_00007_bm7k5/x0dde2494499d4435b08ab5c7702d1de8/1
+DEBUG [2019-08-24 01:32:22,017] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 394984736 proxying successful
+DEBUG [2019-08-24 01:32:22,017] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 394984736 proxying complete
+DEBUG [2019-08-24 01:32:30,145] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: trying to extract query id from path [/v1/statement] or queryString [null]
+DEBUG [2019-08-24 01:32:30,145] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: query id in url [null]
+INFO  [2019-08-24 01:32:30,146] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: Rerouting [http://127.0.0.1:8888/v1/statement]--> [http://47.52.58.151:8081/v1/statement]
+DEBUG [2019-08-24 01:32:30,146] com.lyft.data.proxyserver.ProxyServletImpl: Target : http://47.52.58.151:8081/v1/statement
+DEBUG [2019-08-24 01:32:30,146] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 2046149618 rewriting: http://localhost:8888/v1/statement -> http://47.52.58.151:8081/v1/statement
+INFO  [2019-08-24 01:32:30,146] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: Processing request endpoint: [/v1/statement], payload: [select  * from nation6]
+DEBUG [2019-08-24 01:32:30,146] com.lyft.data.proxyserver.ProxyHandler: -------HttpServletRequest headers---------
+DEBUG [2019-08-24 01:32:30,146] com.lyft.data.proxyserver.ProxyHandler: X-Presto-Routing-Group->adhoc2
+DEBUG [2019-08-24 01:32:30,146] com.lyft.data.proxyserver.ProxyHandler: Transfer-Encoding->chunked
+DEBUG [2019-08-24 01:32:30,146] com.lyft.data.proxyserver.ProxyHandler: User-Agent->presto-client-node 0.6.1
+DEBUG [2019-08-24 01:32:30,146] com.lyft.data.proxyserver.ProxyHandler: Connection->close
+DEBUG [2019-08-24 01:32:30,146] com.lyft.data.proxyserver.ProxyHandler: X-Presto-Source->nodejs-client
+DEBUG [2019-08-24 01:32:30,146] com.lyft.data.proxyserver.ProxyHandler: Host->localhost:8888
+DEBUG [2019-08-24 01:32:30,146] com.lyft.data.proxyserver.ProxyHandler: X-Presto-Catalog->memory
+DEBUG [2019-08-24 01:32:30,146] com.lyft.data.proxyserver.ProxyHandler: X-Presto-Schema->default
+DEBUG [2019-08-24 01:32:30,146] com.lyft.data.proxyserver.ProxyHandler: X-Presto-User->appdemo
+DEBUG [2019-08-24 01:32:30,146] com.lyft.data.proxyserver.ProxyHandler: proxytarget->http://47.52.58.151:8081
+DEBUG [2019-08-24 01:32:30,146] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 2046149618 proxying to upstream:
+POST /v1/statement HTTP/1.1
+X-Presto-Routing-Group: adhoc2
+Transfer-Encoding: chunked
+User-Agent: presto-client-node 0.6.1
+Connection: close
+X-Presto-Source: nodejs-client
+Host: localhost:8888
+X-Presto-Catalog: memory
+X-Presto-Schema: default
+X-Presto-User: appdemo
+proxytarget: http://47.52.58.151:8081
+
+HttpRequest[POST /v1/statement HTTP/1.1]@3cf742a8
+
+DEBUG [2019-08-24 01:32:30,233] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 2046149618 proxying content to upstream: 22 bytes
+DEBUG [2019-08-24 01:32:30,314] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 2046149618 proxying to downstream:
+HttpResponse[HTTP/1.1 200 OK]@6935917d
+Date: Sat, 24 Aug 2019 01:32:30 GMT
+Content-Type: application/json
+X-Content-Type-Options: nosniff
+Content-Length: 603
+
+DEBUG [2019-08-24 01:32:30,314] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: [2046149618] proxying content to downstream: [603] bytes
+DEBUG [2019-08-24 01:32:30,314] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: Response output [{"id":"20190824_013230_00013_i37tc","infoUri":"http://localhost:8888/ui/query.html?20190824_013230_00013_i37tc","nextUri":"http://localhost:8888/v1/statement/queued/20190824_013230_00013_i37tc/x89dc772d09a147d48cd80e4fbcf79a54/1","stats":{"state":"QUEUED","queued":true,"scheduled":false,"nodes":0,"totalSplits":0,"queuedSplits":0,"runningSplits":0,"completedSplits":0,"cpuTimeMillis":0,"wallTimeMillis":0,"queuedTimeMillis":0,"elapsedTimeMillis":0,"processedRows":0,"processedBytes":0,"peakMemoryBytes":0,"spilledBytes":0},"warnings":[],"addedPreparedStatements":{},"deallocatedPreparedStatements":[]}
+]
+DEBUG [2019-08-24 01:32:30,314] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: Proxy destination : http://47.52.58.151:8081
+DEBUG [2019-08-24 01:32:30,315] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: QueryId [20190824_013230_00013_i37tc] mapped with proxy [http://47.52.58.151:8081]
+DEBUG [2019-08-24 01:32:30,316] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 2046149618 proxying successful
+DEBUG [2019-08-24 01:32:30,316] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 2046149618 proxying complete
+DEBUG [2019-08-24 01:32:30,324] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: trying to extract query id from path [/v1/statement/queued/20190824_013230_00013_i37tc/x89dc772d09a147d48cd80e4fbcf79a54/1] or queryString [null]
+DEBUG [2019-08-24 01:32:30,324] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: query id in url [20190824_013230_00013_i37tc]
+INFO  [2019-08-24 01:32:30,324] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: Rerouting [http://127.0.0.1:8888/v1/statement/queued/20190824_013230_00013_i37tc/x89dc772d09a147d48cd80e4fbcf79a54/1]--> [http://47.52.58.151:8081/v1/statement/queued/20190824_013230_00013_i37tc/x89dc772d09a147d48cd80e4fbcf79a54/1]
+DEBUG [2019-08-24 01:32:30,324] com.lyft.data.proxyserver.ProxyServletImpl: Target : http://47.52.58.151:8081/v1/statement/queued/20190824_013230_00013_i37tc/x89dc772d09a147d48cd80e4fbcf79a54/1
+DEBUG [2019-08-24 01:32:30,324] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 797269925 rewriting: http://localhost:8888/v1/statement/queued/20190824_013230_00013_i37tc/x89dc772d09a147d48cd80e4fbcf79a54/1 -> http://47.52.58.151:8081/v1/statement/queued/20190824_013230_00013_i37tc/x89dc772d09a147d48cd80e4fbcf79a54/1
+DEBUG [2019-08-24 01:32:30,324] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 797269925 proxying to upstream:
+GET /v1/statement/queued/20190824_013230_00013_i37tc/x89dc772d09a147d48cd80e4fbcf79a54/1 HTTP/1.1
+Connection: close
+Host: localhost:8888
+proxytarget: http://47.52.58.151:8081
+
+HttpRequest[GET /v1/statement/queued/20190824_013230_00013_i37tc/x89dc772d09a147d48cd80e4fbcf79a54/1 HTTP/1.1]@3a1b4f1a
+
+DEBUG [2019-08-24 01:32:30,421] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 797269925 proxying to downstream:
+HttpResponse[HTTP/1.1 200 OK]@2220b40c
+Date: Sat, 24 Aug 2019 01:32:30 GMT
+Content-Type: application/json
+X-Content-Type-Options: nosniff
+Vary: Accept-Encoding, User-Agent
+Content-Length: 604
+
+DEBUG [2019-08-24 01:32:30,421] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: [797269925] proxying content to downstream: [604] bytes
+DEBUG [2019-08-24 01:32:30,421] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: SKIPPING For /v1/statement/queued/20190824_013230_00013_i37tc/x89dc772d09a147d48cd80e4fbcf79a54/1
+DEBUG [2019-08-24 01:32:30,421] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 797269925 proxying successful
+DEBUG [2019-08-24 01:32:30,422] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 797269925 proxying complete
+DEBUG [2019-08-24 01:32:31,235] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: trying to extract query id from path [/v1/statement/queued/20190824_013230_00013_i37tc/x89dc772d09a147d48cd80e4fbcf79a54/2] or queryString [null]
+DEBUG [2019-08-24 01:32:31,235] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: query id in url [20190824_013230_00013_i37tc]
+INFO  [2019-08-24 01:32:31,235] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: Rerouting [http://127.0.0.1:8888/v1/statement/queued/20190824_013230_00013_i37tc/x89dc772d09a147d48cd80e4fbcf79a54/2]--> [http://47.52.58.151:8081/v1/statement/queued/20190824_013230_00013_i37tc/x89dc772d09a147d48cd80e4fbcf79a54/2]
+DEBUG [2019-08-24 01:32:31,235] com.lyft.data.proxyserver.ProxyServletImpl: Target : http://47.52.58.151:8081/v1/statement/queued/20190824_013230_00013_i37tc/x89dc772d09a147d48cd80e4fbcf79a54/2
+DEBUG [2019-08-24 01:32:31,235] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 2067113986 rewriting: http://localhost:8888/v1/statement/queued/20190824_013230_00013_i37tc/x89dc772d09a147d48cd80e4fbcf79a54/2 -> http://47.52.58.151:8081/v1/statement/queued/20190824_013230_00013_i37tc/x89dc772d09a147d48cd80e4fbcf79a54/2
+DEBUG [2019-08-24 01:32:31,236] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 2067113986 proxying to upstream:
+GET /v1/statement/queued/20190824_013230_00013_i37tc/x89dc772d09a147d48cd80e4fbcf79a54/2 HTTP/1.1
+Connection: close
+Host: localhost:8888
+proxytarget: http://47.52.58.151:8081
+
+HttpRequest[GET /v1/statement/queued/20190824_013230_00013_i37tc/x89dc772d09a147d48cd80e4fbcf79a54/2 HTTP/1.1]@206c9d0e
+
+DEBUG [2019-08-24 01:32:31,316] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 2067113986 proxying to downstream:
+HttpResponse[HTTP/1.1 200 OK]@177e9c5a
+Date: Sat, 24 Aug 2019 01:32:31 GMT
+Content-Type: application/json
+X-Content-Type-Options: nosniff
+Vary: Accept-Encoding, User-Agent
+Content-Length: 608
+
+DEBUG [2019-08-24 01:32:31,317] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: [2067113986] proxying content to downstream: [608] bytes
+DEBUG [2019-08-24 01:32:31,317] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: SKIPPING For /v1/statement/queued/20190824_013230_00013_i37tc/x89dc772d09a147d48cd80e4fbcf79a54/2
+DEBUG [2019-08-24 01:32:31,317] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 2067113986 proxying successful
+DEBUG [2019-08-24 01:32:31,317] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 2067113986 proxying complete
+DEBUG [2019-08-24 01:32:32,121] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: trying to extract query id from path [/v1/statement/executing/20190824_013230_00013_i37tc/x89dc772d09a147d48cd80e4fbcf79a54/0] or queryString [null]
+DEBUG [2019-08-24 01:32:32,121] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: query id in url [20190824_013230_00013_i37tc]
+INFO  [2019-08-24 01:32:32,121] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: Rerouting [http://127.0.0.1:8888/v1/statement/executing/20190824_013230_00013_i37tc/x89dc772d09a147d48cd80e4fbcf79a54/0]--> [http://47.52.58.151:8081/v1/statement/executing/20190824_013230_00013_i37tc/x89dc772d09a147d48cd80e4fbcf79a54/0]
+DEBUG [2019-08-24 01:32:32,121] com.lyft.data.proxyserver.ProxyServletImpl: Target : http://47.52.58.151:8081/v1/statement/executing/20190824_013230_00013_i37tc/x89dc772d09a147d48cd80e4fbcf79a54/0
+DEBUG [2019-08-24 01:32:32,121] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 278141021 rewriting: http://localhost:8888/v1/statement/executing/20190824_013230_00013_i37tc/x89dc772d09a147d48cd80e4fbcf79a54/0 -> http://47.52.58.151:8081/v1/statement/executing/20190824_013230_00013_i37tc/x89dc772d09a147d48cd80e4fbcf79a54/0
+DEBUG [2019-08-24 01:32:32,121] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 278141021 proxying to upstream:
+GET /v1/statement/executing/20190824_013230_00013_i37tc/x89dc772d09a147d48cd80e4fbcf79a54/0 HTTP/1.1
+Connection: close
+Host: localhost:8888
+proxytarget: http://47.52.58.151:8081
+
+HttpRequest[GET /v1/statement/executing/20190824_013230_00013_i37tc/x89dc772d09a147d48cd80e4fbcf79a54/0 HTTP/1.1]@53d4476c
+
+DEBUG [2019-08-24 01:32:32,212] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 278141021 proxying to downstream:
+HttpResponse[HTTP/1.1 200 OK]@6d881705
+Date: Sat, 24 Aug 2019 01:32:32 GMT
+Content-Type: application/json
+X-Content-Type-Options: nosniff
+Vary: Accept-Encoding, User-Agent
+Content-Length: 4156
+
+DEBUG [2019-08-24 01:32:32,212] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: [278141021] proxying content to downstream: [1134] bytes
+DEBUG [2019-08-24 01:32:32,212] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: SKIPPING For /v1/statement/executing/20190824_013230_00013_i37tc/x89dc772d09a147d48cd80e4fbcf79a54/0
+DEBUG [2019-08-24 01:32:32,212] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: [278141021] proxying content to downstream: [1312] bytes
+DEBUG [2019-08-24 01:32:32,212] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: SKIPPING For /v1/statement/executing/20190824_013230_00013_i37tc/x89dc772d09a147d48cd80e4fbcf79a54/0
+DEBUG [2019-08-24 01:32:32,212] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: [278141021] proxying content to downstream: [1710] bytes
+DEBUG [2019-08-24 01:32:32,212] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: SKIPPING For /v1/statement/executing/20190824_013230_00013_i37tc/x89dc772d09a147d48cd80e4fbcf79a54/0
+DEBUG [2019-08-24 01:32:32,213] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 278141021 proxying successful
+DEBUG [2019-08-24 01:32:32,213] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 278141021 proxying complete
+DEBUG [2019-08-24 01:32:33,045] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: trying to extract query id from path [/v1/statement/executing/20190824_013230_00013_i37tc/x89dc772d09a147d48cd80e4fbcf79a54/1] or queryString [null]
+DEBUG [2019-08-24 01:32:33,046] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: query id in url [20190824_013230_00013_i37tc]
+INFO  [2019-08-24 01:32:33,046] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: Rerouting [http://127.0.0.1:8888/v1/statement/executing/20190824_013230_00013_i37tc/x89dc772d09a147d48cd80e4fbcf79a54/1]--> [http://47.52.58.151:8081/v1/statement/executing/20190824_013230_00013_i37tc/x89dc772d09a147d48cd80e4fbcf79a54/1]
+DEBUG [2019-08-24 01:32:33,046] com.lyft.data.proxyserver.ProxyServletImpl: Target : http://47.52.58.151:8081/v1/statement/executing/20190824_013230_00013_i37tc/x89dc772d09a147d48cd80e4fbcf79a54/1
+DEBUG [2019-08-24 01:32:33,046] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 1132002857 rewriting: http://localhost:8888/v1/statement/executing/20190824_013230_00013_i37tc/x89dc772d09a147d48cd80e4fbcf79a54/1 -> http://47.52.58.151:8081/v1/statement/executing/20190824_013230_00013_i37tc/x89dc772d09a147d48cd80e4fbcf79a54/1
+DEBUG [2019-08-24 01:32:33,046] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 1132002857 proxying to upstream:
+GET /v1/statement/executing/20190824_013230_00013_i37tc/x89dc772d09a147d48cd80e4fbcf79a54/1 HTTP/1.1
+Connection: close
+Host: localhost:8888
+proxytarget: http://47.52.58.151:8081
+
+HttpRequest[GET /v1/statement/executing/20190824_013230_00013_i37tc/x89dc772d09a147d48cd80e4fbcf79a54/1 HTTP/1.1]@3a65939a
+
+DEBUG [2019-08-24 01:32:33,128] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 1132002857 proxying to downstream:
+HttpResponse[HTTP/1.1 200 OK]@7e06c71a
+Date: Sat, 24 Aug 2019 01:32:33 GMT
+Content-Type: application/json
+X-Content-Type-Options: nosniff
+Vary: Accept-Encoding, User-Agent
+Content-Length: 1588
+
+DEBUG [2019-08-24 01:32:33,128] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: [1132002857] proxying content to downstream: [1134] bytes
+DEBUG [2019-08-24 01:32:33,128] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: SKIPPING For /v1/statement/executing/20190824_013230_00013_i37tc/x89dc772d09a147d48cd80e4fbcf79a54/1
+DEBUG [2019-08-24 01:32:33,128] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: [1132002857] proxying content to downstream: [454] bytes
+DEBUG [2019-08-24 01:32:33,128] com.lyft.data.gateway.handler.QueryIdCachingProxyHandler: SKIPPING For /v1/statement/executing/20190824_013230_00013_i37tc/x89dc772d09a147d48cd80e4fbcf79a54/1
+DEBUG [2019-08-24 01:32:33,129] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 1132002857 proxying successful
+DEBUG [2019-08-24 01:32:33,129] com.lyft.data.proxyserver.ProxyServletImpl.prestoRouter: 1132002857 proxying complete
+INFO  [2019-08-24 01:36:50,359] org.eclipse.jetty.server.AbstractConnector: Stopped application@3249e278{HTTP/1.1,[http/1.1]}{0.0.0.0:8090}
+INFO  [2019-08-24 01:36:50,360] org.eclipse.jetty.server.AbstractConnector: Stopped admin@35adf623{HTTP/1.1,[http/1.1]}{0.0.0.0:8091}
+INFO  [2019-08-24 01:36:50,362] org.eclipse.jetty.server.handler.ContextHandler: Stopped i.d.j.MutableServletContextHandler@2fb082ff{/,null,UNAVAILABLE}
+INFO  [2019-08-24 01:36:50,365] org.eclipse.jetty.server.handler.ContextHandler: Stopped i.d.j.MutableServletContextHandler@3a861417{/,null,UNAVAILABLE}
+INFO  [2019-08-24 01:36:50,367] org.eclipse.jetty.server.AbstractConnector: Stopped prestoRouter@52b959df{HTTP/1.1,[http/1.1]}{0.0.0.0:8888}
+INFO  [2019-08-24 01:36:50,368] org.eclipse.jetty.server.session: Stopped scavenging
+INFO  [2019-08-24 01:36:50,369] org.eclipse.jetty.server.handler.ContextHandler: Stopped o.e.j.s.ServletContextHandler@64518270{/,null,UNAVAILABLE}
+INFO  [2019-08-24 01:36:50,371] org.eclipse.jetty.server.AbstractConnector: Stopped presto1@7ab802f4{HTTP/1.1,[http/1.1]}{0.0.0.0:8082}
+INFO  [2019-08-24 01:36:50,371] org.eclipse.jetty.server.session: Stopped scavenging
+INFO  [2019-08-24 01:36:50,373] org.eclipse.jetty.server.handler.ContextHandler: Stopped o.e.j.s.ServletContextHandler@38fb50f8{/,null,UNAVAILABLE}
+INFO  [2019-08-24 01:36:50,374] org.eclipse.jetty.server.AbstractConnector: Stopped presto2@24dd44f9{HTTP/1.1,[http/1.1]}{0.0.0.0:8083}
+INFO  [2019-08-24 01:36:50,374] org.eclipse.jetty.server.session: Stopped scavenging
+INFO  [2019-08-24 01:36:50,375] org.eclipse.jetty.server.handler.ContextHandler: Stopped o.e.j.s.ServletContextHandler@4dad8ec0{/,null,UNAVAILABLE}

@@ -2,3 +2,8 @@
 **/target/*
 .DS_Store
 *.iml
+.project
+prestogateway-parent.iml
+.factorypath
+.settings
+./var/log/*

@@ -188,8 +188,14 @@ public class QueryIdCachingProxyHandler extends ProxyHandler {
     log.debug("trying to extract query id from path [{}] or queryString [{}]", path, queryParams);
     if (path.startsWith(V1_STATEMENT_PATH) || path.startsWith(V1_QUERY_PATH)) {
       String[] tokens = path.split("/");
-      if (tokens.length >= 4) {
-        queryId = tokens[4];
+        if (tokens.length >= 4) {
+          if(path.indexOf("queued")>-1||path.indexOf("scheduled")>-1||path.indexOf("executing")>-1||path.indexOf("partialCancel")>-1){
+            queryId = tokens[4];
+          }
+          else {
+            queryId = tokens[3];
+          }
+
       }
     } else if (path.startsWith(PRESTO_UI_PATH)) {
       queryId = queryParams;

@@ -1,18 +1,18 @@
 requestRouter:
   port: 8888
   name: prestoRouter
-  cacheDir: /var/log/prestoproxy/cache
+  cacheDir: ./var/log/prestoproxy/cache
   historySize: 1000
 
 backends:
   - localPort: 8082
     name: presto1
-    proxyTo: http://presto1
+    proxyTo: http://47.52.58.151:8080
     routingGroup: adhoc
 
   - localPort: 8083
     name: presto2
-    proxyTo: http://presto2
+    proxyTo: http://47.52.58.151:8081
     routingGroup: adhoc2
 
 server:
@@ -51,8 +51,8 @@ logging:
   appenders:
     - type: console
     - type: file
-      currentLogFilename: /var/log/prestoproxy/prestoproxy-java.log
-      archivedLogFilenamePattern: /var/log/prestoproxy/prestoproxy-java-%d{yyyy-MM-dd}-%i.log.gz
+      currentLogFilename: ./var/log/prestoproxy/prestoproxy-java.log
+      archivedLogFilenamePattern: ./var/log/prestoproxy/prestoproxy-java-%d{yyyy-MM-dd}-%i.log.gz
       archivedFileCount: 7
       timeZone: UTC
       maxFileSize: 100MB
